@@ -1,0 +1,1 @@
+C:\tmp\my-github\KafkaManagement\obj\Debug\KafkaManagement.csprojResolveAssemblyReference.cache

@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E6F6744-B5D0-4E73-9C5D-E42652344C10}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kafka.Management</RootNamespace>
+    <AssemblyName>KafkaManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="KafkaNET.Library">
+      <HintPath>packages\Microsoft.CSharpClient-for-Kafka.1.0.47\lib\net45\KafkaNET.Library.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZooKeeperNet">
+      <HintPath>packages\ZooKeeper.Net.3.4.6.2\lib\net40\ZooKeeperNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IKafkaClusterManager.cs" />
+    <Compile Include="IZookeeperClient.cs" />
+    <Compile Include="KafkaBrokerInfo.cs" />
+    <Compile Include="KafkaClusterManager.cs" />
+    <Compile Include="KafkaPartitionState.cs" />
+    <Compile Include="KafkaPartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolApiKey.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolApiVersion.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolCompressionCodec.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerDescribeGroupsRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerDescribeGroupsResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerDescribeGroupsResponseGroupInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerDescribeGroupsResponseMemberInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerGroupCoordinatorRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerGroupCoordinatorResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerGroupProtocol.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerHeartbeatRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerHeartbeatResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerJoinGroupRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerJoinGroupRequestV0.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerJoinGroupRequestV1.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerJoinGroupResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerLeaveGroupRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerLeaveGroupResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerListGroupRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerListGroupResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerListGroupResponseGroupInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerMember.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerMemberAssignment.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerPartitionAssignment.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerSyncGroupAssignment.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerSyncGroupRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolConsumerSyncGroupResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolFetchRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolFetchRequestPartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolFetchRequestTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolFetchResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolFetchResponsePartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolFetchResponseTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolFetchResponseV0.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolFetchResponseV1.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolFetchResponseV2.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitRequestPartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitRequestPartitionInfoV0.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitRequestPartitionInfoV1.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitRequestTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitRequestV0.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitRequestV1.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitRequestV2.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitResponsePartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetCommitResponseTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetFetchRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetFetchRequestTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetFetchResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetFetchResponsePartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetFetchResponseTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetListRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetListRequestPartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetListRequestTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetListResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetListResponsePartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolOffsetListResponseTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolPrimitiveType.cs" />
+    <Compile Include="KafkaTopicConfiguration.cs" />
+    <Compile Include="KafkaTopicInfo.cs" />
+    <Compile Include="KafkaBrokerClient.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolErrorCode.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceRequestTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceRequestPartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceResponseTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceResponsePartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceResponsePartitionInfoV1.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceResponsePartitionInfoV2.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceResponseV0.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceResponseV1.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolProduceResponseV2.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolRequestMessageEntry.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolRequestMessageEntryV0.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolRequestMessageEntryV1.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolRequestMessageSet.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolRequestMessageSetEntry.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolTopicMetadataResponsePartitionInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolTopicMetadataResponseTopicInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolTopicMetadataRequest.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolResponse.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolTopicMetadataResponseBrokerInfo.cs" />
+    <Compile Include="KafkaProtocol\KafkaProtocolTopicMetadataResponse.cs" />
+    <Compile Include="ZookeeperClient.cs" />
+    <Compile Include="ZookeeperDataSerializer.cs" />
+    <Compile Include="ZookeeperEventProxy.cs" />
+    <Compile Include="ZookeeperEventWatcher.cs" />
+    <Compile Include="Zookeeper\ZookeeperZnodeAcl.cs" />
+    <Compile Include="Zookeeper\ZookeeperConnectionStatus.cs" />
+    <Compile Include="Zookeeper\ZookeeperZnodeAclIdentity.cs" />
+    <Compile Include="Zookeeper\ZookeeperZnodeType.cs" />
+    <Compile Include="Zookeeper\ZookeeperZnodeAclRights.cs" />
+    <Compile Include="Zookeeper\ZookeeperZnodeStat.cs" />
+    <Compile Include="Zookeeper\ZookeeperOperationException.cs" />
+    <Compile Include="Zookeeper\ZookeeperConnectionSettings.cs" />
+    <Compile Include="IZookeeperEventWatcher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="KafkaProtocol\ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- wild card search for targets file in parent directory -->
+  <!--<Import Project="..\..\build.*.targets" />-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
