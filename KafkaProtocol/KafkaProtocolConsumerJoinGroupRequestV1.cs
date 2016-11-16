@@ -18,6 +18,30 @@ namespace Kafka.Management.KafkaProtocol
         public int RebalanceTimeout { get; set; }
 
         /// <summary>
+        /// Gets the size of the request.
+        /// </summary>
+        protected override int BodySize
+        {
+            get
+            {
+                // TODO : to calculate the packet size in bytes
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Gets the bytes of the request packet.
+        /// </summary>
+        protected override byte[] BodyBytes
+        {
+            get
+            {
+                // TODO : to serialize the request to bytes
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Gets the api version.
         /// </summary>
         public override KafkaProtocolApiVersion ApiVersion

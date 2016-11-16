@@ -12,17 +12,6 @@ namespace Kafka.Management.KafkaProtocol
     public class KafkaProtocolConsumerJoinGroupRequestV0 : KafkaProtocolConsumerJoinGroupRequest
     {
         /// <summary>
-        /// Gets the size of the request.
-        /// </summary>
-        protected override int BodySize
-        {
-            get
-            {
-                return base.BodySize;
-            }
-        }
-
-        /// <summary>
         /// Gets the api version.
         /// </summary>
         public override KafkaProtocolApiVersion ApiVersion

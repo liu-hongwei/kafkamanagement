@@ -22,7 +22,7 @@ namespace Kafka.Management.KafkaProtocol
         /// int64
         /// Last committed message offset.
         /// </summary>
-        public int Offset { get; set; }
+        public long Offset { get; set; }
 
         /// <summary>
         /// Gets or sets the metadata.

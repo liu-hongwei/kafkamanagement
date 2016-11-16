@@ -6,11 +6,21 @@
 
 namespace Kafka.Management.KafkaProtocol
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+
     /// <summary>
     /// The request for describing consumer groups.
     /// </summary>
     public class KafkaProtocolConsumerDescribeGroupsRequest : KafkaProtocolRequest
     {
+        /*
+            DescribeGroupsRequest => [GroupId]
+              GroupId => string 
+        */
+
         /// <summary>
         /// Gets or sets the ids of groups.
         /// </summary>
@@ -23,8 +33,16 @@ namespace Kafka.Management.KafkaProtocol
         {
             get
             {
-                // TODO : to calculate the packet size in bytes
-                return 0;
+                int size = 4;
+                if (this.GroupIds != null && this.GroupIds.Any())
+                {
+                    for (int i = 0; i < this.GroupIds.Length; i++)
+                    {
+                        size += 2 + this.GroupIds[i].Length;
+                    }
+                }
+
+                return size;
             }
         }
 
@@ -35,8 +53,37 @@ namespace Kafka.Management.KafkaProtocol
         {
             get
             {
-                // TODO : to serialize the request to bytes
-                return null;
+                byte[] body;
+                using (var stream = new MemoryStream())
+                {
+                    var writer = new BinaryWriter(stream);
+
+                    if (this.GroupIds == null)
+                    {
+                        var groupIdSizeBytes = KafkaProtocolPrimitiveType.GetBytes(0);
+                        writer.Write(groupIdSizeBytes, 0, groupIdSizeBytes.Length);
+                    }
+                    else
+                    {
+                        var groupIdSizeBytes = KafkaProtocolPrimitiveType.GetBytes(this.GroupIds.Length);
+                        writer.Write(groupIdSizeBytes, 0, groupIdSizeBytes.Length);
+
+                        foreach (var groupId in this.GroupIds)
+                        {
+                            var idSizeBytes = KafkaProtocolPrimitiveType.GetBytes((short)groupId.Length);
+                            writer.Write(idSizeBytes, 0, idSizeBytes.Length);
+                            var idBytes = Encoding.UTF8.GetBytes(groupId);
+                            writer.Write(idBytes, 0, idBytes.Length);
+                        }
+                    }
+
+                    var size = stream.Length;
+                    var buffer = stream.GetBuffer();
+                    body = new byte[size];
+                    Array.Copy(buffer, body, body.Length);
+                }
+
+                return body;
             }
         }
 

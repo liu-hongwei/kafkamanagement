@@ -27,6 +27,6 @@ namespace Kafka.Management.KafkaProtocol
         /// Gets or sets the offset found.
         /// [int64]
         /// </summary>
-        public int[] Offset { get; set; }
+        public long[] Offset { get; set; }
     }
 }

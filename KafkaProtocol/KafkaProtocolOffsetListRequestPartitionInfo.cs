@@ -25,7 +25,7 @@ namespace Kafka.Management.KafkaProtocol
         /// the earliest available offset. 
         /// Note that because offsets are pulled in descending order, asking for the earliest offset will always return you a single element.
         /// </summary>
-        public int Timestamp { get; set; }
+        public long Timestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum number of offsets to list.

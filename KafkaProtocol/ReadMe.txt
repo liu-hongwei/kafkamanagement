@@ -1,4 +1,37 @@
 ﻿October, 2016 by Hongwei Liu, hongwei_liu@outlook.com
+The APIs Implementation Status Table
+
+below is the current implementation status:
+
+---------------------------------------------------------------------------
+APIs Category                     Request                         Status
+---------------------------------------------------------------------------
+Metadata API                      Topic Metadata Request          DONE
+---------------------------------------------------------------------------
+Produce API                       Produce Request                          
+---------------------------------------------------------------------------
+Fetch API                         Fetch Request 
+---------------------------------------------------------------------------
+Offset API(AKA ListOffset)        Offset Request                  DONE
+---------------------------------------------------------------------------
+Offset Commit/Fetch API           Group Coordinator Request       DONE
+                                  ----------------------------------------- 
+                                  Offset Commit Request
+                                  -----------------------------------------
+                                  Offset Fetch Request            DONE
+---------------------------------------------------------------------------
+Group Membership API              Join Group Request
+                                  -----------------------------------------
+                                  SyncGroup Request
+                                  -----------------------------------------
+                                  Heartbeat Request
+                                  -----------------------------------------
+                                  LeaveGroup Request
+---------------------------------------------------------------------------
+Administrative API                ListGroups Request               DONE
+                                  -----------------------------------------
+                                  DescribeGroups Request           DONE
+---------------------------------------------------------------------------
 
 this readme document contains the text version of the kafka protocl, which is copied from https://kafka.apache.org/protocol.html
 The guide of kafka protocol can be found here https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol

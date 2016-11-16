@@ -12,6 +12,11 @@ namespace Kafka.Management.KafkaProtocol
     public class KafkaProtocolOffsetListResponseTopicInfo
     {
         /// <summary>
+        /// Gets or sets the topic name.
+        /// </summary>
+        public string TopicName { get; set; }
+
+        /// <summary>
         /// Gets or sets the partition info in the response.
         /// </summary>
         public KafkaProtocolOffsetListResponsePartitionInfo[] PartitionInfos { get; set; }

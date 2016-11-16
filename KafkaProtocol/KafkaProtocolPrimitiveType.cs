@@ -115,6 +115,22 @@ namespace Kafka.Management.KafkaProtocol
         }
 
         /// <summary>
+        /// Gets the bytes of int64 value.
+        /// </summary>
+        /// <param name="data">The int64 value.</param>
+        /// <returns>The bytes of the int64.</returns>
+        public static byte[] GetBytes(long data)
+        {
+            var buffer = BitConverter.GetBytes(data);
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(buffer);
+            }
+
+            return buffer;
+        }
+
+        /// <summary>
         /// Gets the int16 value from bytes.
         /// </summary>
         /// <param name="data">The bytes of int16 value.</param>
@@ -146,6 +162,23 @@ namespace Kafka.Management.KafkaProtocol
 
             // convert bytes to int
             return BitConverter.ToInt32(data, 0);
+        }
+
+        /// <summary>
+        /// Gets the int64 value from bytes.
+        /// </summary>
+        /// <param name="data">The bytes of int64 value.</param>
+        /// <returns>The int64 value.</returns>
+        public static long GetInt64(byte[] data)
+        {
+            // data in big edian
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(data);
+            }
+
+            // convert bytes to long
+            return BitConverter.ToInt64(data, 0);
         }
 
         ////static byte[] GetBytes(byte[] data)

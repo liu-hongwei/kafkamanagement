@@ -147,11 +147,11 @@ namespace Kafka.Management.KafkaProtocol
                     writer.Write(sizeBytes, 0, sizeBytes.Length);
 
                     // write apikey
-                    var apiKeyBytes = KafkaProtocolPrimitiveType.GetBytes((short)KafkaProtocolApiKey.MetadataRequest);
+                    var apiKeyBytes = KafkaProtocolPrimitiveType.GetBytes((short)this.ApiKey);
                     writer.Write(apiKeyBytes, 0, apiKeyBytes.Length);
 
                     // write apiversion
-                    var apiVersionBytes = KafkaProtocolPrimitiveType.GetBytes((short)KafkaProtocolApiVersion.V0);
+                    var apiVersionBytes = KafkaProtocolPrimitiveType.GetBytes((short)this.ApiVersion);
                     writer.Write(apiVersionBytes, 0, apiVersionBytes.Length);
 
                     // write correlationId
